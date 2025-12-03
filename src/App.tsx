@@ -159,21 +159,21 @@ const App = () => {
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-4 py-10 md:px-8 lg:px-12">
         {view === 'home' ? (
           <motion.main
-            className="grid flex-1 items-center gap-12 lg:grid-cols-[1.1fr,0.9fr]"
+            className="grid flex-1 items-center gap-8 lg:grid-cols-[1.1fr,0.9fr] lg:gap-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col items-center text-center gap-4 md:items-start md:text-left md:gap-6">
               <motion.span
-                className="inline-flex max-w-max items-center gap-2 rounded-full bg-accentSoft px-4 py-2 text-sm font-semibold text-accentMuted shadow-soft"
+                className="inline-flex max-w-max items-center gap-2 rounded-full bg-accentSoft px-3 py-1.5 text-xs font-semibold text-accentMuted shadow-soft md:px-4 md:py-2 md:text-sm"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                <span className="h-2 w-2 rounded-full bg-accentMuted" />
+                <span className="h-1.5 w-1.5 rounded-full bg-accentMuted md:h-2 md:w-2" />
                 Nuova stagione competitiva
               </motion.span>
               <motion.h1
-                className="text-4xl font-semibold leading-tight text-textPrimary md:text-5xl"
+                className="text-3xl font-semibold leading-tight text-textPrimary md:text-4xl lg:text-5xl"
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 }}
@@ -181,7 +181,7 @@ const App = () => {
                 Campo Minato, stile classico con vibes da prato fresco.
               </motion.h1>
               <motion.p
-                className="max-w-xl text-lg text-textMuted"
+                className="max-w-xl text-base text-textMuted mx-auto md:mx-0 md:text-lg"
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
@@ -190,18 +190,18 @@ const App = () => {
                 inizia con un click, ma solo gli occhi piu attenti evitano le mine.
               </motion.p>
               <motion.div
-                className="flex flex-wrap gap-3 text-sm text-textMuted"
+                className="flex flex-wrap justify-center gap-2 text-xs text-textMuted md:justify-start md:gap-3 md:text-sm"
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}
               >
-                <span className="inline-flex items-center gap-2 rounded-full bg-surfaceHighlight px-3 py-2 shadow-soft">
+                <span className="inline-flex items-center gap-2 rounded-full bg-surfaceHighlight px-2.5 py-1.5 shadow-soft md:px-3 md:py-2">
                   Campo personalizzabile
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-surfaceHighlight px-3 py-2 shadow-soft">
+                <span className="inline-flex items-center gap-2 rounded-full bg-surfaceHighlight px-2.5 py-1.5 shadow-soft md:px-3 md:py-2">
                   Animazioni fluide
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-surfaceHighlight px-3 py-2 shadow-soft">
+                <span className="inline-flex items-center gap-2 rounded-full bg-surfaceHighlight px-2.5 py-1.5 shadow-soft md:px-3 md:py-2">
                   Modalita OP segreta
                 </span>
               </motion.div>
@@ -222,25 +222,26 @@ const App = () => {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-3xl bg-surfaceHighlight px-6 py-4 shadow-soft">
-              <div className="flex items-center gap-4">
+            <div className="flex flex-col gap-4 rounded-3xl bg-surfaceHighlight px-5 py-4 shadow-soft md:flex-row md:items-center md:justify-between md:gap-3 md:px-6">
+              <div className="flex items-center justify-between gap-4 md:justify-start">
                 <motion.button
                   type="button"
                   onClick={handleReturnHome}
-                  className="inline-flex items-center gap-2 rounded-full border border-accentGlow/60 bg-white px-4 py-2 text-sm font-semibold text-accentMuted transition hover:border-accentMuted/45 hover:bg-accentSoft"
+                  className="inline-flex items-center gap-2 rounded-full border border-accentGlow/60 bg-white px-3 py-2 text-sm font-semibold text-accentMuted transition hover:border-accentMuted/45 hover:bg-accentSoft md:px-4"
                   whileTap={{ scale: 0.98 }}
                 >
-                  Indietro alla lobby
+                  <span className="md:hidden">←</span>
+                  <span className="hidden md:inline">Indietro alla lobby</span>
                 </motion.button>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-textMuted/70">Partita attuale</p>
-                  <h2 className="text-xl font-semibold text-textPrimary">
-                    {selectedDifficulty.name} · {currentConfig.rows} x {currentConfig.columns}
+                <div className="text-right md:text-left">
+                  <p className="hidden text-xs uppercase tracking-[0.35em] text-textMuted/70 md:block">Partita attuale</p>
+                  <h2 className="text-lg font-semibold text-textPrimary md:text-xl">
+                    {selectedDifficulty.name} <span className="text-textMuted">·</span> {currentConfig.rows}x{currentConfig.columns}
                   </h2>
                 </div>
               </div>
               <motion.div
-                className="inline-flex items-center gap-3 rounded-full bg-accentSoft px-4 py-2 text-sm font-semibold text-accentMuted shadow-soft"
+                className="hidden items-center gap-3 rounded-full bg-accentSoft px-4 py-2 text-sm font-semibold text-accentMuted shadow-soft md:inline-flex"
                 initial={{ scale: 0.92, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
               >

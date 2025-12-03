@@ -44,25 +44,23 @@ export const ControlPanel = ({
             key={difficulty.id}
             type="button"
             onClick={() => onSelectDifficulty(difficulty.id)}
-            className={`group relative w-full overflow-hidden rounded-2xl border p-4 text-left shadow-soft transition ${
-              isActive
-                ? 'border-accentMuted/45 bg-accentSoft ring-1 ring-accentMuted/40'
-                : 'border-surfaceSoft bg-surfaceHighlight hover:border-accentSoft'
-            }`}
+            className={`group relative w-full overflow-hidden rounded-2xl border p-3 text-left shadow-soft transition md:p-4 ${isActive
+              ? 'border-accentMuted/45 bg-accentSoft ring-1 ring-accentMuted/40'
+              : 'border-surfaceSoft bg-surfaceHighlight hover:border-accentSoft'
+              }`}
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.98 }}
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-textMuted/70">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-textMuted/70 md:text-sm">
                   {difficulty.name}
                 </p>
-                <p className="mt-1 text-sm text-textMuted">{difficulty.description}</p>
+                <p className="mt-1 text-xs text-textMuted md:text-sm">{difficulty.description}</p>
               </div>
               <motion.span
-                className={`ml-3 inline-flex h-8 min-w-[2.5rem] items-center justify-center rounded-full text-sm font-semibold ${
-                  isActive ? 'bg-accentMuted text-white shadow-glass' : 'bg-surfaceSoft text-textMuted'
-                }`}
+                className={`ml-3 inline-flex h-8 min-w-[2.5rem] items-center justify-center rounded-full text-sm font-semibold ${isActive ? 'bg-accentMuted text-white shadow-glass' : 'bg-surfaceSoft text-textMuted'
+                  }`}
                 layout
               >
                 {difficulty.config.rows}x{difficulty.config.columns}
@@ -108,7 +106,7 @@ export const ControlPanel = ({
   return (
     <aside className={containerClasses}>
       <div>
-        <p className="text-xs uppercase tracking-[0.35em] text-textMuted/70">Difficolta</p>
+        <p className="text-xs uppercase tracking-[0.35em] text-textMuted/70 text-center md:text-left">Difficolta</p>
         <div className="mt-3 flex flex-col gap-3">{difficultyCards}</div>
       </div>
 
@@ -121,7 +119,7 @@ export const ControlPanel = ({
             exit={{ opacity: 0, y: -8 }}
             className="space-y-4 rounded-2xl border border-surfaceSoft bg-surfaceHighlight p-4 shadow-soft"
           >
-            <p className="text-xs uppercase tracking-[0.32em] text-textMuted/70">Impostazioni personalizzate</p>
+            <p className="text-xs uppercase tracking-[0.32em] text-textMuted/70 text-center md:text-left">Impostazioni personalizzate</p>
 
             <div className="grid grid-cols-3 gap-3">
               <label className="flex flex-col gap-1 text-xs text-textMuted">
@@ -197,7 +195,7 @@ export const ControlPanel = ({
       </AnimatePresence>
 
       <div className="rounded-2xl border border-surfaceSoft bg-surfaceHighlight p-4 shadow-soft">
-        <p className="text-xs uppercase tracking-[0.32em] text-textMuted/70">Panoramica partita</p>
+        <p className="text-xs uppercase tracking-[0.32em] text-textMuted/70 text-center md:text-left">Panoramica partita</p>
         <div className="mt-3 grid gap-2 text-sm text-textMuted">
           <div className="flex justify-between">
             <span>Griglia</span>
@@ -233,3 +231,4 @@ export const ControlPanel = ({
     </aside>
   );
 };
+// End of ControlPanel component

@@ -35,23 +35,25 @@ export const StatsPanel = ({
 }: StatsPanelProps) => {
   return (
     <section className="rounded-3xl border border-surfaceSoft bg-surfaceHighlight px-6 py-5 shadow-soft">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="flex flex-col gap-2">
-          <p className="text-xs uppercase tracking-[0.25em] text-textMuted/70">Stato</p>
-          <span className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold ${statusBadgeClasses[stats.status]}`}>
-            {statusLabel}
-          </span>
+      <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-4">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex flex-col gap-1">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-textMuted/70 md:text-xs">Stato</p>
+            <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold md:px-4 md:py-1.5 md:text-sm ${statusBadgeClasses[stats.status]}`}>
+              {statusLabel}
+            </span>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <StatPill icon={<Clock className="h-4 w-4 text-accentMuted" />} label={formatTime(stats.timeMs)} caption="Tempo" />
+        <div className="grid grid-cols-3 gap-2 md:flex md:flex-wrap md:items-center md:gap-3">
+          <StatPill icon={<Clock className="h-3.5 w-3.5 text-accentMuted md:h-4 md:w-4" />} label={formatTime(stats.timeMs)} caption="Tempo" />
           <StatPill
-            icon={<Bomb className="h-4 w-4 text-danger" />}
+            icon={<Bomb className="h-3.5 w-3.5 text-danger md:h-4 md:w-4" />}
             label={stats.flagsLeft.toString()}
-            caption="Mine rimanenti"
+            caption="Mine"
           />
           <StatPill
-            icon={<Brain className="h-4 w-4 text-warning" />}
+            icon={<Brain className="h-3.5 w-3.5 text-warning md:h-4 md:w-4" />}
             label={stats.mistakes.toString()}
             caption="Errori"
           />
@@ -63,9 +65,8 @@ export const StatsPanel = ({
           {isOpMode ? (
             <motion.span
               key={isCheatPeekActive ? 'op-active' : 'op-idle'}
-              className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold ${
-                isCheatPeekActive ? 'bg-accentMuted text-white shadow-[0_0_22px_rgba(67,207,110,0.35)]' : 'bg-accentGlow text-accentMuted'
-              }`}
+              className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold ${isCheatPeekActive ? 'bg-accentMuted text-white shadow-[0_0_22px_rgba(67,207,110,0.35)]' : 'bg-accentGlow text-accentMuted'
+                }`}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: 'spring', stiffness: 240, damping: 18 }}
@@ -120,11 +121,11 @@ const StatPill = ({
   label: string;
   caption: string;
 }) => (
-  <div className="inline-flex items-center gap-3 rounded-2xl border border-surfaceSoft bg-surfaceHighlight px-4 py-2 shadow-soft">
-    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-soft">{icon}</span>
+  <div className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-surfaceSoft bg-surfaceHighlight p-2 text-center shadow-soft md:inline-flex md:flex-row md:gap-3 md:px-4 md:py-2 md:text-left">
+    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-soft md:h-8 md:w-8">{icon}</span>
     <div className="flex flex-col leading-tight">
-      <span className="text-xs uppercase tracking-[0.25em] text-textMuted/70">{caption}</span>
-      <span className="text-lg font-semibold text-textPrimary tabular-nums">{label}</span>
+      <span className="text-[10px] uppercase tracking-[0.25em] text-textMuted/70 md:text-xs">{caption}</span>
+      <span className="text-sm font-semibold text-textPrimary tabular-nums md:text-lg">{label}</span>
     </div>
   </div>
 );

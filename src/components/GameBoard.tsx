@@ -3,6 +3,7 @@ import { Bomb, Flag, HelpCircle, MousePointerClick, PartyPopper } from 'lucide-r
 import { memo, useMemo } from 'react';
 import type { CSSProperties, MouseEvent } from 'react';
 import { Cell, GameStatus } from '../types';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 const numberColorMap: Record<number, string> = {
   1: 'text-sky-600',
@@ -111,11 +112,9 @@ const CellButton = memo(
         onClick={handleClick}
         onContextMenu={handleContextMenu}
         onDoubleClick={handleDoubleClick}
-        className={`${baseClasses} ${(cell.isRevealed || cheatPeek) ? revealedClasses : unrevealedClasses} ${
-          cell.isExploded ? 'animate-pulse bg-danger/10 border-danger/50' : ''
-        } ${cell.isHinted ? 'outline outline-2 outline-accentMuted/60 shadow-glass' : ''} ${
-          isTemporaryReveal ? 'ring-1 ring-accentMuted/40 bg-accentSoft/70 backdrop-blur-sm' : ''
-        }`}
+        className={`${baseClasses} ${(cell.isRevealed || cheatPeek) ? revealedClasses : unrevealedClasses} ${cell.isExploded ? 'animate-pulse bg-danger/10 border-danger/50' : ''
+          } ${cell.isHinted ? 'outline outline-2 outline-accentMuted/60 shadow-glass' : ''} ${isTemporaryReveal ? 'ring-1 ring-accentMuted/40 bg-accentSoft/70 backdrop-blur-sm' : ''
+          }`}
         style={{ width: size, height: size }}
         initial={false}
         whileHover={!cell.isRevealed ? { scale: 1.02 } : undefined}
@@ -153,15 +152,27 @@ export const GameBoard = ({
   const columns = board[0]?.length ?? 0;
   const rows = board.length;
 
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
   const cellSize = useMemo(() => {
     const maxDimension = Math.max(rows, columns);
+
+    if (isMobile) {
+      if (maxDimension <= 8) return 48;
+      if (maxDimension <= 12) return 40;
+      if (maxDimension <= 16) return 34;
+      if (maxDimension <= 22) return 30;
+      if (maxDimension <= 28) return 26;
+      return 24;
+    }
+
     if (maxDimension <= 8) return 76;
     if (maxDimension <= 12) return 64;
     if (maxDimension <= 16) return 56;
     if (maxDimension <= 22) return 48;
     if (maxDimension <= 28) return 42;
     return 36;
-  }, [columns, rows]);
+  }, [columns, rows, isMobile]);
 
   const boardStyle = useMemo<CSSProperties>(
     () => ({
@@ -184,11 +195,10 @@ export const GameBoard = ({
 
   return (
     <div
-      className={`relative rounded-3xl border border-surfaceSoft bg-surfaceHighlight p-5 shadow-[0_40px_85px_-42px_rgba(67,207,110,0.45)] ${
-        opMode ? 'ring-1 ring-accentMuted/40' : ''
-      }`}
+      className={`relative max-w-full overflow-auto rounded-3xl border border-surfaceSoft bg-surfaceHighlight p-5 shadow-[0_40px_85px_-42px_rgba(67,207,110,0.45)] ${opMode ? 'ring-1 ring-accentMuted/40' : ''
+        }`}
     >
-      <div className="grid justify-center gap-2" style={boardStyle}>
+      <div className="grid gap-2 w-max mx-auto" style={boardStyle}>
         {board.flat().map((cell) => (
           <CellButton
             key={cell.id}

@@ -1,8 +1,8 @@
-# 💣 Minesweeper with Cheats
+# Minesweeper with Cheats
 
 A modern, feature-rich Minesweeper game built with **Vite**, **React**, **TypeScript**, and **Tailwind CSS**. Includes classic game modes, smooth animations, and a secret cheat mode for those who want to play with an unfair advantage!
 
-## 🎮 Features
+## Features
 
 - **Multiple Difficulty Levels**
   - Beginner: 9×9 grid with 10 mines
@@ -30,12 +30,12 @@ A modern, feature-rich Minesweeper game built with **Vite**, **React**, **TypeSc
   - Hints system (limited per game)
   - Game status indicators
 
-- **🤫 Secret Cheat Mode (OP Mode)**
+- **Secret Cheat Mode (OP Mode)**
   - Press `Alt+C`, `Alt+I`, `Alt+A`, `Alt+O` to unlock the cheat mode
   - Hold `Tab` while in cheat mode to peek at all mines on the board
   - Perfect for learning mine patterns or just having fun!
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend Framework**: React 18
 - **Build Tool**: Vite
@@ -45,7 +45,7 @@ A modern, feature-rich Minesweeper game built with **Vite**, **React**, **TypeSc
 - **Icons**: Lucide React
 - **Code Quality**: ESLint with Prettier
 
-## 📦 Installation
+## Installation
 
 1. Clone the repository:
 ```bash
@@ -65,7 +65,7 @@ npm run dev
 
 4. Open your browser and navigate to `http://localhost:5173`
 
-## 🚀 Build & Deploy
+## Build & Deploy
 
 Build the project for production:
 ```bash
@@ -77,14 +77,14 @@ Preview the production build locally:
 npm run preview
 ```
 
-## 📝 Scripts
+## Scripts
 
 - `npm run dev` - Start Vite development server
 - `npm run build` - Build TypeScript and bundle with Vite
 - `npm run preview` - Preview the production build
 - `npm run lint` - Run ESLint on TypeScript files
 
-## 🎯 How to Play
+## How to Play
 
 1. **Start a Game**: Select your difficulty level and click "Start Game"
 2. **Reveal Cells**: Left-click any cell to reveal it
@@ -93,7 +93,7 @@ npm run preview
 5. **Win**: Reveal all non-mine cells to win the game
 6. **Lose**: Click on a mine and it's game over
 
-## 🤐 Cheat Mode (Secret!)
+## Cheat Mode (Secret!)
 
 To unlock the OP (Overpowered) mode:
 1. While in-game, press: `Alt+C` → `Alt+I` → `Alt+A` → `Alt+O` (in sequence, within 1.2 seconds between each key)
@@ -101,7 +101,7 @@ To unlock the OP (Overpowered) mode:
 3. Hold `Tab` to peek at all mines on the board
 4. Perfect for learning strategies or just having fun!
 
-## 🎨 Customization
+## Customization
 
 You can create custom board configurations with:
 - Custom grid size (4×4 to 30×30)
@@ -110,14 +110,14 @@ You can create custom board configurations with:
 - Enable/disable chording
 - Enable/disable question marks
 
-## 📱 Responsive Design
+## Responsive Design
 
 The game is fully responsive and works great on:
 - Desktop browsers
 - Tablets
 - Mobile devices (though classic Minesweeper is best enjoyed on larger screens)
 
-## 🔧 Project Structure
+## Project Structure
 
 ```
 src/
@@ -134,7 +134,7 @@ src/
     └── useMinesweeper.ts  # Core game logic hook
 ```
 
-## 🎓 Game Rules
+## Game Rules
 
 - A mine-free cell shows the number of adjacent mines (0-8)
 - If a cell has 0 adjacent mines, adjacent cells are automatically revealed
@@ -142,20 +142,20 @@ src/
 - If all non-mine cells are revealed, you win!
 - If you reveal a mine, you lose
 
-## 🚨 Known Features
+## Known Features
 
 - Safe first move ensures you never lose on your first click
 - Chording allows quick gameplay once you've mastered the rules
 - Question marks help when you're uncertain about a mine location
 - Hints are limited to encourage strategic thinking
 
-## 📄 License
+## License
 
 This project is open source and available under the MIT License.
 
-## 🎉 Enjoy!
+## Enjoy!
 
-Have fun sweeping those mines! And remember, when you get stuck... you know the cheat code! 😉
+Have fun sweeping those mines! And remember, when you get stuck... you know the cheat code!
 
 ---
 
